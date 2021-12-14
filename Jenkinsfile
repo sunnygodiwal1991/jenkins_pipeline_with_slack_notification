@@ -1,9 +1,6 @@
-pipeline { 
-  
+pipeline {  
    agent any
-
-   stages {
-   
+   stages {   
      stage('Install Dependencies') { 
         steps { 
            sh 'echo "Install Dependencies..."' 
@@ -14,15 +11,12 @@ pipeline {
         steps { 
            sh 'echo "testing application..."'
         }
-      }
-
-         stage("Deploy application") { 
-         steps { 
-           sh 'echo "deploying application..."'
-         }
-
      }
-  
-   	}
 
+     stage("Deploy application") { 
+        steps { 
+           sh 'echo "deploying application..."'
+        }
+     }
    }
+}
