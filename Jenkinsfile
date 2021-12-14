@@ -26,6 +26,19 @@ pipeline {
          sh 'echo "deploying application..."'
          sh 'sleep 80'         
        }
+       post { 
+         always {
+           echo "+++++ always ++++"             
+         }
+         success {
+           echo "+++++ success ++++"
+           slackSend channel: 'devops', message: "$JOB_NAME Success"              
+         }
+         failure {
+           echo "+++++ failure ++++"
+           slackSend channel: 'devops', message: "$JOB_NAME Failed"             
+         }
+       }
      }
    }
 }
