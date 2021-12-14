@@ -8,6 +8,19 @@ pipeline {
          sh 'echo "Install Dependencies..."' 
          sh 'sleep 80' 
        }
+       post { 
+         always {
+           echo "+++++ ALWAYS ++++"             
+         }
+         success {
+           echo "+++++ success ++++"
+           slackSend channel: 'devops', message: "$JOB_NAME HAS BEEN SUCCESSFULLY COMPLETED"              
+         }
+         failure {
+           echo "+++++ failure ++++"
+           slackSend channel: 'devops', message: "$JOB_NAME HAS BEEN FAILED"             
+         }
+       }       
      }
      
      stage('Test') { 
@@ -17,6 +30,19 @@ pipeline {
          sh 'echo "testing application..."'
          sh 'sleep 80'         
        }
+       post { 
+         always {
+           echo "+++++ ALWAYS ++++"             
+         }
+         success {
+           echo "+++++ success ++++"
+           slackSend channel: 'devops', message: "$JOB_NAME HAS BEEN SUCCESSFULLY COMPLETED"              
+         }
+         failure {
+           echo "+++++ failure ++++"
+           slackSend channel: 'devops', message: "$JOB_NAME HAS BEEN FAILED"             
+         }
+       }       
      }
 
      stage("Deploy application") { 
