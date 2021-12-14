@@ -3,7 +3,7 @@ pipeline {
    stages {         
      stage('Install Dependencies') { 
        steps {
-         slackSend channel: 'devopsteam-14z1296', message: 'Job Started' 
+         slackSend channel: 'devops', message: 'Job Started' 
          sh 'echo "Install Dependencies..."' 
        }
      }
