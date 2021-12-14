@@ -28,15 +28,15 @@ pipeline {
        }
        post { 
          always {
-           echo "+++++ always ++++"             
+           echo "+++++ ALWAYS ++++"             
          }
          success {
            echo "+++++ success ++++"
-           slackSend channel: 'devops', message: "$JOB_NAME Success"              
+           slackSend channel: 'devops', message: "$JOB_NAME HAS BEEN SUCCESSFULLY COMPLETED"              
          }
          failure {
            echo "+++++ failure ++++"
-           slackSend channel: 'devops', message: "$JOB_NAME Failed"             
+           slackSend channel: 'devops', message: "$JOB_NAME HAS BEEN FAILED"             
          }
        }
      }
